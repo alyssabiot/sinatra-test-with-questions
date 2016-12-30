@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+      <% @database.each_with_index do |article, ind| %>
+        <div class="article">
+          <h2><%= article[:title] %></h2>
+          <div class="article-body">
+            <% if article.has_key?(:photo) %>
+              <img src="<%= article[:photo] %>">
+            <% end %>
+            <p class="content"><%= article[:content] %></p>
+          </div>
+          <p class="rating">
+            <% article[:rating].to_i.times do %>
+              <i class= "fa fa-star points"></i>
+            <% end %>
+            <% (5 - article[:rating].to_i).times do %>
+              <i class= "fa fa-star no-points"></i>
+            <% end %>
+          </p>
+          <button class="comments-btn btn" id="btn_<%= ind %>">See comments</button>
+          <div class="comments text-center hidden" id="comments_<%= ind %>">
+            <% @comments[ind].each_with_index do |comm, id| %>
+            <p class="comment-body">« <%= comm %> »</p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+  $('.comments-btn').on('click', function() {
+    var btn_id = this.id;
+    console.log(btn_id);
+    var comments_id = "comments_" + btn_id.substring(4);
+    console.log(comments_id);
+    $('#'+comments_id).toggleClass('hidden');
+  });
+});
+</script>

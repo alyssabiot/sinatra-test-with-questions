@@ -1,0 +1,19 @@
+.comment-body {
+  font-size: 16px;
+  font-style: italic;
+}
+
+.comments-btn {
+  color: white;
+  background-color: #00BCD6;
+}
+
+.comments-btn:hover {
+  color: white;
+  background: #00BCD6;
+  border-color: white;
+}
+
+.comments {
+  margin-top: 20px;
+}
