@@ -59,7 +59,23 @@ Si vous êtes Français, vous pouvez répondre en Français.
 1. Describe the color yellow to someone who is blind
 
 >
+Le jaune est la couleur de la joie, de la vivacité. Elle correspond à la sensation des rayons du soleil sur notre visage en été.
+
 
 3. Describe the data model you’d use for a Battleship game. What are the key objects? How will your code use them?
 
 >
+- Model Player
+  - name (string)
+- Model Ship
+  - player_id
+  - size (nombre de cases occupées)
+  - position (numéro de la 1ère case sur laquelle est posée le Ship)
+  - direction (orientation du Ship pour déterminer les numéros des autres cases occupées)
+  - number_left (nombre de cases non devinées par l'adversaire)
+
+Le joueur propose une case : le programme détermine s'il existe un bateau adverse à cet endroit en fonction de la coordonnées initiale du bateau, de sa taille et de sa direction.
+S'il n'y a pas de bateau, rien ne se passe. C'est au deuxième joueur de proposer une case.
+S'il y a un bateau, on enlève 1 au "number_left" : si number_left = 0 => le bateau est coulé.
+Si tous les bateaux d'un joueur ont un number_left = 0, le jeu est terminé.
+
